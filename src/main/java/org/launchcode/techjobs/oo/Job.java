@@ -36,10 +36,12 @@ public class Job {
 
     public Employer getEmployer() {
         return employer;
+
     }
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
+
     }
 
     public Location getLocation() {
@@ -69,6 +71,31 @@ public class Job {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        System.out.println(employer.getValue()==null);
+        if (name.equals("")){
+            name.equals("Data Not Available");
+        }
+       else if(employer.getValue().equals("")||employer.getValue()==null){
+            employer.setValue("Data Not Available");
+        } else if (location.getValue().equals("")||location.getValue()==null){
+            location.setValue("Data Not Available");
+        } else if (positionType.getValue().equals("") ||positionType.getValue()==null){
+            positionType.setValue("Data Not Available");
+        } else if (coreCompetency.getValue().equals("")||coreCompetency.getValue()==null){
+            coreCompetency.setValue("Data Not Available");
+        }
+
+        return "\n" + "ID: "+ id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+    }
+
 
     @Override
     public boolean equals(Object o) {
