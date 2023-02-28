@@ -13,11 +13,12 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    public Job(){
+    public Job() {
         id = nextId;
         nextId++;
     }
-    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCorecompetency){
+
+    public Job(String aName, Employer aEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCorecompetency) {
         this();
         this.name = aName;
         this.employer = aEmployer;
@@ -74,21 +75,24 @@ public class Job {
 
     @Override
     public String toString() {
-        System.out.println(employer.getValue()==null);
-        if (name.equals("")){
-            name.equals("Data Not Available");
+        System.out.println(employer.getValue() == null);
+        if (name.equals("")) {
+            name.equals("Data not available");
         }
-       else if(employer.getValue().equals("")||employer.getValue()==null){
-            employer.setValue("Data Not Available");
-        } else if (location.getValue().equals("")||location.getValue()==null){
-            location.setValue("Data Not Available");
-        } else if (positionType.getValue().equals("") ||positionType.getValue()==null){
-            positionType.setValue("Data Not Available");
-        } else if (coreCompetency.getValue().equals("")||coreCompetency.getValue()==null){
-            coreCompetency.setValue("Data Not Available");
+        if (employer.getValue().equals("") || employer.getValue() == null) {
+            employer.setValue("Data not available");
+        }
+        if (location.getValue().equals("") || location.getValue() == null) {
+            location.setValue("Data not available");
+        }
+        if (positionType.getValue().equals("") || positionType.getValue() == null) {
+            positionType.setValue("Data not available");
+        }
+        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null) {
+            coreCompetency.setValue("Data not available");
         }
 
-        return "\n" + "ID: "+ id + "\n" +
+        return "\n" + "ID: " + id + "\n" +
                 "Name: " + name + "\n" +
                 "Employer: " + employer + "\n" +
                 "Location: " + location + "\n" +
@@ -97,25 +101,39 @@ public class Job {
     }
 
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Job)) return false;
+//        Job job = (Job) o;
+//        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+//    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+        return Objects.hash(id);
     }
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 }
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+//    }
+//    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
+//    //  other five fields. The second constructor should also call the first in order to initialize
+//    //  the 'id' field.
+//
+//    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
+//    //  match.
+//
+//    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+//    //  and id.
+//}
